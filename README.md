@@ -1,4 +1,3 @@
-# audiophile-linux
 This repository contains helpful information for audio enthusiasts who use Linux
 
 # Hardware
@@ -86,10 +85,10 @@ index f66f7fe..6d7d7a6 100644
 
 I drew from these sources:
 
-1. https://medium.com/@gamunu/enable-high-quality-audio-on-linux-6f16f3fe7e1f
-2. https://www.systutorials.com/docs/linux/man/1-pulseaudio/#lbAI
-3. https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting
-4. https://forums.linuxmint.com/viewtopic.php?t=253225
+1. [Medium](https://medium.com/@gamunu/enable-high-quality-audio-on-linux-6f16f3fe7e1f)
+2. [Systutorials](https://www.systutorials.com/docs/linux/man/1-pulseaudio/#lbAI)
+3. [Archlinux](https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting)
+4. [Linux Mint Forums](https://forums.linuxmint.com/viewtopic.php?t=253225)
 
 # ALSA
 I created the file `~.asoundrc/asound.conf` with the following contents
@@ -101,7 +100,7 @@ pcm.!default {
    slave.pcm hw
 }
 ```
-Check the (source)[https://medium.com/@gamunu/enable-high-quality-audio-on-linux-6f16f3fe7e1f]
+Check the [source](https://medium.com/@gamunu/enable-high-quality-audio-on-linux-6f16f3fe7e1f)
 
 # Pulseeffects
 I installed the Flatpak version of pulseeffects. At first I played with the "niceness" level on the global menu of the application but I realized that it's ignored! In particular I changed the niceness parameter to -15 and then ran `ps -o ni $(pidof pulseeffects)` only to see that the process had a niceness level of 0. The temporary shortcut that I found is running the following (keep in mind that I run pulseeffects as a Flatpak app):
@@ -110,6 +109,7 @@ I installed the Flatpak version of pulseeffects. At first I played with the "nic
 flatpak run com.github.wwmm.pulseeffects
 sudo renice -15 -p $(pgrep pulseeffects)
 ```
+Please note that you may need to open a new tab in your command line for the second command.
 
 # QuodLibet
 
