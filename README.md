@@ -6,7 +6,7 @@ My setup:
 Ubuntu 18.04 64-bit > USB > Topping D10 > JDS Labs Atom (low gain) > Beyerdynamic DT-770 Pro 250 Ohm
 
 # Setup
-I listen to Tidal lossless through pulseaudio via Google Chrome (BTW, Tidal no longer requires Flash) and use pulseeffects to equalize my headphones. On occasion, I play bitperfect sound through Quodlibet.
+I listen to Tidal lossless through pulseaudio via Google Chrome and use pulseeffects to equalize my headphones. On occasion, I play bitperfect sound through Quodlibet.
 
 # Pulseaudio
 Here is the `git diff` of the changes I made from the default configuration of /etc/pulse/dameon.conf
@@ -92,7 +92,7 @@ I drew from these sources:
 4. https://forums.linuxmint.com/viewtopic.php?t=253225
 
 # ALSA
-I created the file ~.asoundrc/asound.conf with the following contents
+I created the file `~.asoundrc/asound.conf` with the following contents
 
 ```
 # Use PulseAudio plugin hw
@@ -101,13 +101,14 @@ pcm.!default {
    slave.pcm hw
 }
 ```
-Source: https://medium.com/@gamunu/enable-high-quality-audio-on-linux-6f16f3fe7e1f
+Check the (source)[https://medium.com/@gamunu/enable-high-quality-audio-on-linux-6f16f3fe7e1f]
 
 # Pulseeffects
-I installed the Flatpak version of pulseeffects. On the global menu I set:
+I installed the Flatpak version of pulseeffects. At first I played with the "niceness" level on the global menu of the application but I realized that it's ignored! In particular I changed the niceness parameter to -15 and then ran `ps -o ni $(pidof pulseeffects)` only to see that the process had a niceness level of 0. The temporary shortcut that I found is running the following (keep in mind that I run pulseeffects as a Flatpak app):
+
 ```
-Priority Type = Real Time
-Priority = 9
+flatpak run com.github.wwmm.pulseeffects
+sudo renice -15 -p $(pgrep pulseeffects)
 ```
 
 # QuodLibet
@@ -117,7 +118,7 @@ I like this application because it's actively under development, allows easily t
 The settings I use (which you will have to modify for your use case), File > Preferences > Output pipeline:
 
 ```
-alsasink device=hw:Uber,0
+alsasink device=hw:D10,0
 ```
 
 You can figure out the name of your sound card with
