@@ -1,0 +1,1 @@
+pulseaudio --dump-resample-methods
