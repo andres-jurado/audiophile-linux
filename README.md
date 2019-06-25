@@ -113,6 +113,13 @@ sudo renice -15 -p $(pgrep pulseeffects)
 ```
 Please note that you may need to open a new tab in your command line for the second command.
 
+### Equalization settings
+
+I've found two good sources for equalization settings:
+
+1. [Oratory](https://www.reddit.com/r/headphones/comments/9o2f5n/psa_oratory1990s_list_of_eq_presets/)
+2. [Auto Eq](https://github.com/jaakkopasanen/AutoEq)
+
 ### QuodLibet
 
 I like this application because it's actively under development, allows easily to play bitperfect and runs natively on Wayland. On Ubuntu you can install it through APT and flatpak. The flatpak version cannot run bitperfect audio at this moment due to flatpak's security model. Thus, I use the APT executable.
