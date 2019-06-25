@@ -1,6 +1,6 @@
 sources: [Medium](https://medium.com/@gamunu/enable-high-quality-audio-on-linux-6f16f3fe7e1f)
 
-location: /etc/pulse
+location: `/etc/pulse`
 
 Other useful links regarding pulseaudio:
 1. [Systutorials](https://www.systutorials.com/docs/linux/man/1-pulseaudio/#lbAI)
