@@ -105,7 +105,7 @@ pcm.!default {
 Check [Medium](https://medium.com/@gamunu/enable-high-quality-audio-on-linux-6f16f3fe7e1f)
 
 ### Pulseeffects
-I installed the Flatpak version of pulseeffects. At first I played with the "niceness" level on the global menu of the application but I realized that it's ignored! In particular I changed the niceness parameter to -15 and then ran `ps -o ni $(pidof pulseeffects)` only to see that the process had a niceness level of 0. The temporary shortcut that I found is running the following (keep in mind that I run pulseeffects as a Flatpak app):
+I installed the Flatpak version of pulseeffects. At first, I played with the "niceness" level on the global menu of the application but I realized that it's ignored! In particular I changed the niceness parameter to -15 and then ran `ps -o ni $(pidof pulseeffects)` only to see that the process had a niceness level of 0. The temporary shortcut that I found is running the following (keep in mind that I run pulseeffects as a Flatpak app):
 
 ```
 flatpak run com.github.wwmm.pulseeffects
