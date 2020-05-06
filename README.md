@@ -10,79 +10,50 @@ Ubuntu 18.04 64-bit > USB > Topping D10 DAC > JDS Labs Atom Amp (low gain) > Bey
 I listen to Tidal lossless through pulseaudio via Google Chrome and use pulseeffects to equalize my headphones. On occasion, I play bitperfect sound through Quodlibet.
 
 ### Pulseaudio
-Here is the `git diff` of the changes I made from the default configuration of /etc/pulse/dameon.conf
+Here are the changes that I made from the default configuration of `/etc/pulse/dameon.conf`. I'm using as base the newest `daemon.conf` from Ubuntu 20.04. You can find the configuration files in `./pulse`.
 
+_Old_
 ```
-diff --git a/daemon.conf.bak b/daemon.conf
-index f66f7fe..6d7d7a6 100644
---- a/daemon.conf.bak
-+++ b/daemon.conf
-@@ -17,7 +17,7 @@
- ## more information. Default values are commented out.  Use either ; or # for
- ## commenting.
+; daemonize = no
+
+; high-priority = yes
+; nice-level = -11
+
+; realtime-scheduling = yes
+; realtime-priority = 5
+
+; resample-method = speex-float-1
+; avoid-resampling = false
+
+; rlimit-rtprio = 9
+
+; default-sample-format = s16le
+; default-sample-rate = 44100
+; alternate-sample-rate = 48000
+; default-sample-channels = 2
+; default-channel-map = front-left,front-right
+```
+
+_New_
+```
+ daemonize = no
+
+ high-priority = yes
+ nice-level = -15
+
+ realtime-scheduling = yes
+ realtime-priority = 9
  
--; daemonize = no
-+ daemonize = no
- ; fail = yes
- ; allow-module-loading = yes
- ; allow-exit = yes
-@@ -30,11 +30,11 @@
- ; lock-memory = no
- ; cpu-limit = no
- 
--; high-priority = yes
--; nice-level = -11
-+ high-priority = yes
-+ nice-level = -15
- 
--; realtime-scheduling = yes
--; realtime-priority = 5
-+ realtime-scheduling = yes
-+ realtime-priority = 9
- 
- ; exit-idle-time = 20
- ; scache-idle-time = 20
-@@ -50,11 +50,11 @@
- ; log-time = no
- ; log-backtrace = 0
- 
--; resample-method = speex-float-1
--; avoid-resampling = false
-+ resample-method = speex-float-10
-+ avoid-resampling = yes
- ; enable-remixing = yes
- ; remixing-use-all-sink-channels = yes
--; enable-lfe-remixing = no
-+ enable-lfe-remixing = no
- ; lfe-crossover-freq = 0
- 
- flat-volumes = no
-@@ -72,17 +72,17 @@ flat-volumes = no
- ; rlimit-sigpending = -1
- ; rlimit-msgqueue = -1
- ; rlimit-nice = 31
--; rlimit-rtprio = 9
-+ rlimit-rtprio = 9
- ; rlimit-rttime = 200000
- 
--; default-sample-format = s16le
--; default-sample-rate = 44100
--; alternate-sample-rate = 48000
--; default-sample-channels = 2
--; default-channel-map = front-left,front-right
-+ default-sample-format = float32le
-+ default-sample-rate = 44100
-+ alternate-sample-rate = 96000
-+ default-sample-channels = 2
-+ default-channel-map = front-left,front-right
- 
--; default-fragments = 4
--; default-fragment-size-msec = 25
-+ default-fragments = 2
-+ default-fragment-size-msec = 125
- 
- ; enable-deferred-volume = yes
- deferred-volume-safety-margin-usec = 1
+ resample-method = speex-float-10
+ avoid-resampling = yes
+
+ rlimit-rtprio = 9
+
+ default-sample-format = float32le
+ default-sample-rate = 44100
+ alternate-sample-rate = 96000
+ default-sample-channels = 2
+ default-channel-map = front-left,front-right
 ```
 
 I drew from these sources:
