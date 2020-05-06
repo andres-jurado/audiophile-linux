@@ -44,7 +44,7 @@ I drew from these sources:
 4. [Linux Mint Forums](https://forums.linuxmint.com/viewtopic.php?t=253225)
 5. Personal communication with pulseaudio developer Tanu Kaskinen
 
-Note that `resample-method = speex-float-10` might be [overkill](pulseaudio-discuss.freedesktop.narkive.com/KVOBRkZO/patch-2-4-enabled-libsoxr-resampler-backend#post5).
+Note that `resample-method = speex-float-10` might be [overkill](https://pulseaudio-discuss.freedesktop.narkive.com/KVOBRkZO/patch-2-4-enabled-libsoxr-resampler-backend#post5).
 
 
 ### Pulseeffects
