@@ -50,8 +50,8 @@
 ; log-time = no
 ; log-backtrace = 0
 
-; resample-method = speex-float-1
-; avoid-resampling = false
+ resample-method = speex-float-10
+ avoid-resampling = yes
 ; enable-remixing = yes
 ; remixing-use-all-sink-channels = yes
 ; remixing-produce-lfe = no
@@ -78,9 +78,9 @@
 ; rlimit-rtprio = 9
 ; rlimit-rttime = 200000
 
-; default-sample-format = s16le
-; default-sample-rate = 44100
-; alternate-sample-rate = 48000
+ default-sample-format = float32le
+ default-sample-rate = 44100
+ alternate-sample-rate = 96000
 ; default-sample-channels = 2
 ; default-channel-map = front-left,front-right
 

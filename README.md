@@ -1,10 +1,12 @@
 # Audiophile Linux
 
-This repository contains helpful information for audio enthusiasts who use Linux
+This repository contains helpful information for audio enthusiasts who use Linux. Contributions and comments are welcome!
+
+If you are an audio enthusiast using Linux, please consider supporting a developer, such as [Tanu Kaskinen](https://www.patreon.com/tanuk/posts)
 
 ### Hardware
 My setup:
-Ubuntu 18.04 64-bit > USB > Topping D10 DAC > JDS Labs Atom Amp (low gain) > Beyerdynamic DT-770 Pro 250 Ohm
+Ubuntu 20.04 64-bit > USB > Schiit Modi 3 > JDS Labs Atom Amp (low gain) > Beyerdynamic DT-1990 Pro
 
 ### Setup
 I listen to Tidal lossless through pulseaudio via Google Chrome and use pulseeffects to equalize my headphones. On occasion, I play bitperfect sound through Quodlibet.
@@ -14,46 +16,24 @@ Here are the changes that I made from the default configuration of `/etc/pulse/d
 
 _Old_
 ```
-; daemonize = no
-
-; high-priority = yes
-; nice-level = -11
-
-; realtime-scheduling = yes
-; realtime-priority = 5
-
 ; resample-method = speex-float-1
 ; avoid-resampling = false
-
-; rlimit-rtprio = 9
 
 ; default-sample-format = s16le
 ; default-sample-rate = 44100
 ; alternate-sample-rate = 48000
-; default-sample-channels = 2
-; default-channel-map = front-left,front-right
 ```
 
 _New_
 ```
- daemonize = no
-
- high-priority = yes
- nice-level = -15
-
- realtime-scheduling = yes
- realtime-priority = 9
- 
- resample-method = speex-float-10
+ resample-method = speex-float-10 # This might be [overkill](pulseaudio-discuss.freedesktop.narkive.com/KVOBRkZO/patch-2-4-enabled-libsoxr-resampler-backend#post5)
  avoid-resampling = yes
 
- rlimit-rtprio = 9
+## These next options should be tailored to your use case and hardware. I mainly play files in 44100 and 96000 bit rate through headphones.
 
  default-sample-format = float32le
  default-sample-rate = 44100
  alternate-sample-rate = 96000
- default-sample-channels = 2
- default-channel-map = front-left,front-right
 ```
 
 I drew from these sources:
@@ -62,18 +42,8 @@ I drew from these sources:
 2. [Systutorials](https://www.systutorials.com/docs/linux/man/1-pulseaudio/#lbAI)
 3. [Archlinux](https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting)
 4. [Linux Mint Forums](https://forums.linuxmint.com/viewtopic.php?t=253225)
+5. Personal communication with pulseaudio developer Tanu Kaskinen
 
-### ALSA
-I created the file `~.asoundrc/asound.conf` with the following contents
-
-```
-# Use PulseAudio plugin hw
-pcm.!default {
-   type plug
-   slave.pcm hw
-}
-```
-Check [Medium](https://medium.com/@gamunu/enable-high-quality-audio-on-linux-6f16f3fe7e1f)
 
 ### Pulseeffects
 I installed the Flatpak version of pulseeffects. At first, I played with the "niceness" level on the global menu of the application but I realized that it's ignored! In particular I changed the niceness parameter to -15 and then ran `ps -o ni $(pidof pulseeffects)` only to see that the process had a niceness level of 0. The temporary shortcut that I found is running the following (keep in mind that I run pulseeffects as a Flatpak app):
