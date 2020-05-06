@@ -26,7 +26,7 @@ _Old_
 
 _New_
 ```
- resample-method = speex-float-10 # This might be [overkill](pulseaudio-discuss.freedesktop.narkive.com/KVOBRkZO/patch-2-4-enabled-libsoxr-resampler-backend#post5)
+ resample-method = speex-float-10
  avoid-resampling = yes
 
 ## These next options should be tailored to your use case and hardware. I mainly play files in 44100 and 96000 bit rate through headphones.
@@ -43,6 +43,8 @@ I drew from these sources:
 3. [Archlinux](https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting)
 4. [Linux Mint Forums](https://forums.linuxmint.com/viewtopic.php?t=253225)
 5. Personal communication with pulseaudio developer Tanu Kaskinen
+
+Note that `resample-method = speex-float-10` might be [overkill](pulseaudio-discuss.freedesktop.narkive.com/KVOBRkZO/patch-2-4-enabled-libsoxr-resampler-backend#post5).
 
 
 ### Pulseeffects
