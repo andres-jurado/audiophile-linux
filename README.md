@@ -42,7 +42,7 @@ I drew from these sources:
 2. [Systutorials](https://www.systutorials.com/docs/linux/man/1-pulseaudio/#lbAI)
 3. [Archlinux](https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting)
 4. [Linux Mint Forums](https://forums.linuxmint.com/viewtopic.php?t=253225)
-5. Personal [communication](https://github.com/andres-jurado/audiophile-linux/blob/tanu-kaskinen/other/Tanu%20Kaskinen/conversation.md) with pulseaudio developer Tanu Kaskinen
+5. Personal [communication](./other/Tanu%20Kaskinen/conversation.md) with pulseaudio developer Tanu Kaskinen
 
 Note that `resample-method = speex-float-10` might be [overkill](https://pulseaudio-discuss.freedesktop.narkive.com/KVOBRkZO/patch-2-4-enabled-libsoxr-resampler-backend#post5).
 
